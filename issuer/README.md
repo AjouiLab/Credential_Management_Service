@@ -1,23 +1,10 @@
 [![img](https://img.shields.io/badge/Lifecycle-Maturing-007EC6)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-# BC Gov Issuer Kit
+# Issuer Web
+https://github.com/bcgov/issuer-kit 참조
 
-This repo contains code and deployment instructions for running the BC Gov's Issuer Kit Verifiable Credentials proof of concept (PoC). The ID Kit PoC includes:
-
-- An administrator application that allows the organization operating the PoC to invite (via email) and track participants to be issued a verifiable credential.
-- An issuer application used by participants to set the claims in, and be issued, a verifiable credential.
-- Links to applications at which the verifiable credential can be used for login using a [verifiable credential-enabled OpenID Connect Identity Provider](https://github.com/bcgov/vc-authn-oidc) (IdP).
-
-The instructions below allow you to run the application on your laptop in a couple of different ways. Once you are familiar with the app, you can configure the code to be deployed on enterprise hardware, with updates applicable to your environment.
-
-An overview of the architecture of the IdKit and the administrator and participant flows can be found [here](docs/issuer-kit.md).
-
-Need a mobile app to try? Instructions are available [here](../issuer-kit/docs/GettingApp.md) for getting an IOS mobile app. An Android app will be available Real Soon Now.
-
-> The instructions here are still a bit raw. We're iterating on them and check back if things don't go smoothly. We're happy to answer any questions you have. Easiest way to connect with us is to add an [issue](https://github.com/bcgov/issuer-kit/issues) in this repo.
-
-## Pre-Requisites
+## 사전 설치
 
 - [Docker](https://www.docker.com/products/docker-desktop)
 
@@ -27,25 +14,20 @@ Need a mobile app to try? Instructions are available [here](../issuer-kit/docs/G
 
 - [ngrok](https://ngrok.com)
 
-- [von-network](https://github.com/bcgov/von-network) - Local Mode only (see below)
+- [von-network](https://github.com/bcgov/von-network) - 로컬모드로 실행
 
-`jq` and `ngrok` are available on package manager systems for different platforms such as [Homebrew](https://brew.sh/) (Mac), [Chocolatey](https://chocolatey.org/) (Windows) and various Linux distribution package managers.
-
-## Running the Issuer Kit
-
-Issuer Kit can be started in different (demo, local and developer) modes by executing the steps in the respective sections below. The following are a couple important things to keep in mind as you start the apps:
-
-- When starting the system, there is an initial pause with a message to give you a chance to setup some GitHub integration capabilities. That is needed only if you want test out logging into the admin and issuer applications using GitHub credentials. When getting started, we recommend that you just wait for the start up process to continue.
+## Issuer-Web 실행방법
 
 - A local maildev server will be running at http://localhost:8050: you can use it to monitor the outgoing emails sent from the admin app when creating a new invite.
 
-- The apps (administrator and issuer) are protected by a locally running instance of Red Hat's Keycloak Identity and Access Management (IAM) component that is started as part of the Docker compose process. Credentials are pre-configured for the two applications with appropriate access as follows:
-  - For the administrator app use: `issuer-admin`/`issuer-admin`
-  - For the issuer app use: `issuer-user`/`issuer-user`
+- ID / Password
+  - 관리자 : `issuer-admin`/`issuer-admin`
+  - 사용자: `issuer-user`/`issuer-user`
 
-### Demo Mode
+### Demo 모드드
 
-Demo mode runs Issuer Kit using the [BCovrin Test](http://test.bcovrin.vonx.io) ledger and uses `ngrok` to expose the agent running locally to the Internet. The Streetcred mobile agent (iOS and Android) can be used with Issuer Kit if you use demo mode.
+ [BCovrin Test](http://test.bcovrin.vonx.io) ledger를 사용하며
+ and 로컬 개발 환경에서 인터넷을 통해 웹 애플리케이션에 안전하게 접근할 수 있도록 `ngrok` 사용
 
 To run in demo mode, open two shell/terminal sessions:
 
@@ -55,7 +37,7 @@ To run in demo mode, open two shell/terminal sessions:
     - run `./manage build` to assemble the runtime images for the services
     - when the build completes, run `./manage start-demo`
 
-Once started, the services will be exposed on localhost at the following endpoints:
+컨테이너 단말의 주소:
 
 - `api`: http://localhost:5000
 
