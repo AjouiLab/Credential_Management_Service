@@ -24,7 +24,7 @@ https://github.com/bcgov/issuer-kit 참조
   - 관리자 : `issuer-admin`/`issuer-admin`
   - 사용자: `issuer-user`/`issuer-user`
 
-### Demo 모드드
+### Demo 모드
 
  [BCovrin Test](http://test.bcovrin.vonx.io) ledger를 사용하며
  and 로컬 개발 환경에서 인터넷을 통해 웹 애플리케이션에 안전하게 접근할 수 있도록 `ngrok` 사용
