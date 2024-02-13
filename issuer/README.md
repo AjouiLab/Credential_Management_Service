@@ -29,13 +29,13 @@ https://github.com/bcgov/issuer-kit 참조
  [BCovrin Test](http://test.bcovrin.vonx.io) ledger를 사용하며
  and 로컬 개발 환경에서 인터넷을 통해 웹 애플리케이션에 안전하게 접근할 수 있도록 `ngrok` 사용
 
-To run in demo mode, open two shell/terminal sessions:
+1. 터미널 1: [ngrok] 폴더 진입
+    
+    - `./start-ngrok.sh' 실행
 
-1. From within the [ngrok](./ngrok) folder execute `./start-ngrok.sh`. This will create a tunnel for the agent.
-
-2. From within the [docker](./docker) folder:
-    - run `./manage build` to assemble the runtime images for the services
-    - when the build completes, run `./manage start-demo`
+2. 터미널 2: [docker] 폴더 진입
+    - run `./manage build` 실행
+    - 빌드 완료 시  `./manage start-demo` 실앵
 
 컨테이너 단말의 주소:
 
@@ -53,21 +53,12 @@ To run in demo mode, open two shell/terminal sessions:
 
 - `maildev`: http://localhost:8050
 
-Within the Streetcred app, check the settings to see what Ledger you are using. For this demo the Streetcred app must be set to use the "BCovrin Test" network, as follows:
+재시작 방법:
+  - 터미널 2에서 Ctrl-C 누름
+  - `./manage stop` 실행 후 다시 `./manage start-demo` 실앵
 
-- Go to settings by clicking the menu icon in the top right (the "hamburger" icon&mdash;three stacked horizontal lines)
-- Click on the "Network" item and from the subsequent list select "BCovrin Test" network.
-- Click the back arrow to return to the settings and again to return to the main app screen.
-
-For instructions on how to run the demo, please refer to [this document](./docs/issuer-kit.md).
-
-To restart the applications:
-
-- In the second terminal, hit Ctrl-C and then:
-  - run `./manage stop` to stop the apps so you can update the code and restart by rerunning the `./manage` commands above. 
-
-- To stop and delete the storage for the apps:
-  - In the second terminal, hit Ctrl-C and run `./manage down`
+- 종료 방법:
+  - 터미널 2에서 Ctrl-C 누르고 `./manage down`
   - In the first terminal, hit Ctrl-C to stop `ngrok`
 
 ### Local Mode
@@ -107,38 +98,6 @@ To restart the applications:
 - To stop and delete the storage for the apps:
   - In the second terminal, hit Ctrl-C and run `./manage down`
   - In the first terminal, hit Ctrl-C to stop `ngrok`
-
-### Development Mode
-
-Development mode runs the admin frontend, public frontend and the api/controller in development mode with hot-reloading enabled. This means that any change to the code in the `src` directories of `issuer-admin`, `issuer-web` and `api` will automatically trigger a rebuild and reload of the associated service.
-
-To run in development mode, run `npm install` in each one of the `issuer-admin`, `issuer-web` and `api` directories and then run the same steps as `Local Mode` above, but use `./manage start-dev` in place of the `./manage start` command in the second shell.
-
-The services will be running at the following endpoints:
-
-- `api`: http://localhost:5000
-
-- `issuer-admin` Administrator app: http://localhost:4250
-
-- `issuer-web` Issuer app: http://localhost:4251
-
-- `db`: http://localhost:27017
-
-- `keycloak`: http://localhost:8180
-
-- `agent`: http://localhost:8024
-
-- `maildev`: http://localhost:8050
-
-## Keycloak Configuration and Users
-
-While it is possible to provide a client id and token pair to use the GitHub integration for Keycloak (follow the on-screen instructions when starting the apps), two default users  are shipped with the default Keycloak configuration:
-
-- to access the `issuer-admin` Administrator app, use the following username/password combination: `issuer-admin/issuer-admin`.
-
-- to access the `issuer-web` Issuer webapp, use the following username/password combination: `user/user`.
-
-:warning: The `issuer-admin` user can also access the public webapp, however `issuer-web` will only be able to access the public site. When testing locally, it is recommended to open admin and public sites in two different browsers in order to prevent cookies to auto-login the admin user onto the public site.
 
 ## Credential Schema
 
