@@ -1,0 +1,38 @@
+{
+  "env": "development",
+  "issuer": {
+    "name": "Issuer Name"
+  },
+  "help": {
+    "enabled": true,
+    "displayOnFirstVisit": false
+  },
+  "inviteRequired": false,
+  "authentication": {
+    "enabled": true,
+    "autoSignOut": true,
+    "oidcSettings": {
+      "authority": "http://localhost:8180/auth/realms/issuer-kit",
+      "clientId": "issuer-kit-public",
+      "redirectUri": "http://localhost:4251/oidc-callback",
+      "redirect_uri": "http://localhost:4251/oidc-callback-error",
+      "responseType": "code",
+      "scope": "openid profile email",
+      "automaticSilentRenew": true,
+      "silentRedirectUri": "http://localhost:4251/silent-renew-oidc.html",
+      "post_logout_redirect_uri": "http://localhost:4251"
+    }
+  },
+  "apiServer": {
+    "url": "http://localhost:5000"
+  },
+  "issuedSuccess": {
+    "successText": "To try out your new credential:",
+    "links": [
+      {
+        "url": "https://csb-audio.pathfinder.gov.bc.ca",
+        "description": "CSB Audio"
+      }
+    ]
+  }
+}

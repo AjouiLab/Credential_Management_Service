@@ -1,0 +1,7 @@
+tunnels:
+  issuer-agent:
+    addr: 8021
+    proto: http
+    bind-tls: true
+version: "1"
+authtoken: 2E1UffCb71pghmnI7e81akGrSHe_xdANAJZttKrV5TtKAFk4
