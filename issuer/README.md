@@ -61,18 +61,18 @@ https://github.com/bcgov/issuer-kit 참조
   - 터미널 2에서 Ctrl-C 누르고 `./manage down`
   - In the first terminal, hit Ctrl-C to stop `ngrok`
 
-### Local Mode
+### 로컬 모드
 
-In Local Mode the entire application runs locally and uses a locally deployed Indy ledger. In Local Mode you cannot use the Streetcred agent because it is unable to access the ledger being used.
+전체 애플리케이션이 로컬로 실행되며 로컬로 배포된 Indy 원장을 사용한다. 
 
-To run in local mode, open two shell/terminal sessions:
+로컬 모드에서 실행하려면 두 개의 셸/터미널 세션을 엽니다
 
-1. Follow the [instructions](https://github.com/bcgov/von-network#running-the-network-locally) to start `von-network` running locally
+1. 
 2. Change to the Issuer Kit [docker](./docker) folder:
    - run `./manage build` to assemble the runtime images for the services.
    - run `./manage start` to start the containers
 
-Once started, the services will be exposed on localhost at the following endpoints:
+컨테이너 단말의 주소:
 
 - `api`: http://localhost:5000
 
