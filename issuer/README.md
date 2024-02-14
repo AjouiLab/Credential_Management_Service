@@ -59,7 +59,7 @@ https://github.com/bcgov/issuer-kit 참조
 
 - 종료 방법:
   - 터미널 2에서 Ctrl-C 누르고 `./manage down`
-  - In the first terminal, hit Ctrl-C to stop `ngrok`
+  - 터미널 1에서 Ctrl-C
 
 ### 로컬 모드
 
@@ -67,10 +67,15 @@ https://github.com/bcgov/issuer-kit 참조
 
 로컬 모드에서 실행하려면 두 개의 셸/터미널 세션을 엽니다
 
-1. 
-2. Change to the Issuer Kit [docker](./docker) folder:
-   - run `./manage build` to assemble the runtime images for the services.
-   - run `./manage start` to start the containers
+1. 터미널 1: (https://github.com/AjouiLab/Credential_Management_Service/tree/main/blockchain) 로컬로 실행
+2. 터미널 1: [ngrok] 폴더 진입
+    
+    - `./start-ngrok.sh' 실행
+
+3. 터미널 2: [docker] 폴더 진입
+    - run `./manage build` 실행
+    - 빌드 완료 시  `./manage start` 실앵
+
 
 컨테이너 단말의 주소:
 
@@ -88,16 +93,15 @@ https://github.com/bcgov/issuer-kit 참조
 
 - `maildev`: http://localhost:8050
 
-:information_source: When running in local OR demo mode, changes to the code will not be reflected in the containers unless a rebuild using `./manage build` and restart using `./manage start` is performed.
 
-To restart the applications:
+재시작 방법:
+  - 터미널 2에서 Ctrl-C 누름
+  - `./manage stop` 실행 후 다시 `./manage start-demo` 실앵
 
-- In the second terminal, hit Ctrl-C and then:
-  - run `./manage stop` to stop the apps so you can update the code and restart by rerunning the `./manage` commands above. 
+- 종료 방법:
+  - 터미널 2에서 Ctrl-C 누르고 `./manage down`
+  - 터미널 1에서 Ctrl-C
 
-- To stop and delete the storage for the apps:
-  - In the second terminal, hit Ctrl-C and run `./manage down`
-  - In the first terminal, hit Ctrl-C to stop `ngrok`
 
 ## Credential Schema
 
